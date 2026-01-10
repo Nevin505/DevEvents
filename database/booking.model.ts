@@ -50,7 +50,7 @@ BookingSchema.pre<BookingDocument>("save", async function (next) {
   if (!exists) {
     throw new Error("Referenced event does not exist");
   }
-  next();
+  // next();
 });
 
 export const Booking: Model<BookingDocument> =
