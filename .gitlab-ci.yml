@@ -1,0 +1,9 @@
+stages:
+  - build
+  - deploy
+building:
+  stage: build
+  image: node:22
+  script:
+    - node -v
+  
