@@ -2,6 +2,6 @@ name: Dev Events
 on: [push]
 jobs:
   sample_execution_jobs:
-    runs-on: ubuntu-latest
+    runs-on: ["self-hosted", "linux", "x64"]
     steps:
      - run: echo "hi testing this pipeline"
