@@ -4,4 +4,12 @@ jobs:
   sample_execution_jobs:
     runs-on: ["self-hosted", "linux", "x64"]
     steps:
-     - run: echo "hi testing this pipeline"
+      - uses: actions/checkout@v4
+      - name: Use Node js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+      - run: echo "hi testing this pipeline"
+      - run: npm i
+      - run: npm install pm2 -g
+      - run: pm2 start "npm start"
