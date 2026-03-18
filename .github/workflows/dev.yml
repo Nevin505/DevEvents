@@ -3,5 +3,6 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
   Sample-Checking:
+    runs-on: ubuntu-latest
     steps:
-      run : "Echo Hai"
+      - run: "Echo Hai"
