@@ -1,0 +1,7 @@
+name: Dev-Events CI/CD
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  Sample-Checking:
+    steps:
+      run : "Echo Hai"
