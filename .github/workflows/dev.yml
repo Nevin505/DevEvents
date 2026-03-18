@@ -5,4 +5,4 @@ jobs:
   Sample-Checking:
     runs-on: ubuntu-latest
     steps:
-      - run: "Echo Hai"
+      - run: echo "Hai"
