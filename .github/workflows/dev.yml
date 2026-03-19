@@ -30,7 +30,8 @@ jobs:
 
             cd DevEvents
             git pull https://x-access-token:$GIT_TOKEN@github.com/Nevin505/DevEvents.git master
-
+            which node
+            which npm
             npm install
             npm run dev
           EOF 
