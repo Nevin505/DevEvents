@@ -11,6 +11,12 @@ jobs:
         env:
           PRIVATE_KEY: $${{ secrets.SSH_PRIVATE_KEY }}
         run: |
-           echo "$PRIVATE_KEY"
-           echo "private_key"
-           ls
+          echo "$PRIVATE_KEY"
+          echo "private_key"
+          chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key root@ec2-13-201-78-176.ap-south-1.compute.amazonaws.com'
+           # Your deployment commands go here
+          pwd
+          ls
+          npm install
+          npm run dev
