@@ -19,7 +19,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no ubuntu@ec2-13-201-78-176.ap-south-1.compute.amazonaws.com "echo Connected"
             pwd
             ls
-            cd /home/ubuntu/your-project 
-            npm install
-            npm run dev
+            # cd /home/ubuntu/your-project 
+            # npm install
+            # npm run dev
           
