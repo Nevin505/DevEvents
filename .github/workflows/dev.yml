@@ -12,10 +12,11 @@ jobs:
           PRIVATE_KEY: ${{ secrets.PRIVATEKEY }}
         run: |
           echo "$PRIVATE_KEY"
-          echo "$PRIVATE_KEY" > private_key.pem
-          chmod 600 private_key.pem
+          mkdir -p ~/.ssh
+          printf "%s" "$PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
           echo "private_key"
-          ssh -o StrictHostKeyChecking=no -i $PRIVATE_KEY root@ec2-13-201-78-176.ap-south-1.compute.amazonaws.com'
+           ssh -o StrictHostKeyChecking=no ec2-user@your-ec2-ip "echo Connected"
           # Your deployment commands go here
           pwd
           ls
