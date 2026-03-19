@@ -29,8 +29,8 @@ jobs:
             fi
 
             cd DevEvents
-            git pull https://x-access-token:$GIT_TOKEN@github.com/Nevin505/DevEvents.git main
+            git pull https://x-access-token:$GIT_TOKEN@github.com/Nevin505/DevEvents.git master
 
             npm install
             npm run dev
-          EOF
+          EOF 
