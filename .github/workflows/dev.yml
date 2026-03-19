@@ -13,4 +13,4 @@ jobs:
         run: |
            echo "$PRIVATE_KEY"
            echo "private_key"
-           cat ls
+           ls
