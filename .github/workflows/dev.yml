@@ -9,12 +9,14 @@ jobs:
         uses: actions/checkout@v3
       - name: SSH TO EC2
         env:
-          PRIVATE_KEY: $${{ secrets.PRIVATEKEY }}
+          PRIVATE_KEY: ${{ secrets.PRIVATEKEY }}
         run: |
           echo "$PRIVATE_KEY"
+          echo "$PRIVATE_KEY" > private_key.pem
+          chmod 600 private_key.pem
           echo "private_key"
           ssh -o StrictHostKeyChecking=no -i $PRIVATE_KEY root@ec2-13-201-78-176.ap-south-1.compute.amazonaws.com'
-           # Your deployment commands go here
+          # Your deployment commands go here
           pwd
           ls
           npm install
