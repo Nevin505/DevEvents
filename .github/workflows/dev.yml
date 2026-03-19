@@ -1,32 +1,36 @@
 name: Dev-Events CI/CD
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+
 on: [push]
+
 jobs:
   Sample-Checking:
     runs-on: ubuntu-latest
+
     steps:
       - name: CheckOut Code
         uses: actions/checkout@v3
+
       - name: SSH TO EC2
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATEKEY }}
           GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
         run: |
-          echo "$PRIVATE_KEY"
           mkdir -p ~/.ssh
           printf "%s" "$PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          echo "private_key"
-          ssh -o StrictHostKeyChecking=no ubuntu@ec2-13-201-78-176.ap-south-1.compute.amazonaws.com "echo Connected"
+
+          ssh -o StrictHostKeyChecking=no ubuntu@ec2-13-201-78-176.ap-south-1.compute.amazonaws.com << EOF
+            echo "Connected to EC2"
             pwd
-            # First time only
+
             if [ ! -d "DevEvents" ]; then
-             git clone https://x-access-token:$GIT_TOKEN@github.com/Nevin505/DevEvents.git
+              git clone https://x-access-token:$GIT_TOKEN@github.com/Nevin505/DevEvents.git
             fi
 
             cd DevEvents
-            git pull origin main
+            git pull https://x-access-token:$GIT_TOKEN@github.com/Nevin505/DevEvents.git main
 
             npm install
             npm run dev
-          
+          EOF
