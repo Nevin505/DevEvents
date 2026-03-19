@@ -21,7 +21,7 @@ jobs:
             pwd
             # First time only
             if [ ! -d "DevEvents" ]; then
-             git clone https://$GIT_TOKEN@github.com/Nevin505/DevEvents.git
+             git clone https://x-access-token:$GIT_TOKEN@github.com/Nevin505/DevEvents.git
             fi
 
             cd DevEvents
