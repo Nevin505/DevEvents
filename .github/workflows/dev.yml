@@ -29,8 +29,7 @@ jobs:
             git clone https://github.com/Nevin505/DevEvents.git DevEvents
             cd /home/ubuntu/DevEvents &&
             git fetch --all &&
-             fuser -k 3000/tcp || true &&
             git pull origin master &&
             npm install &&
-            npm run dev
+           pm2 restart DevEvents || pm2 start npm --name DevEvents -- run dev
             "
