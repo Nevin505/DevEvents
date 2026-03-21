@@ -14,27 +14,22 @@ jobs:
       - name: SSH TO EC2
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATEKEY }}
-          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
         run: |
           mkdir -p ~/.ssh
           printf "%s" "$PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
 
-          ssh -o StrictHostKeyChecking=no ubuntu@ec2-13-201-78-176.ap-south-1.compute.amazonaws.com "
-            export NVM_DIR=\$HOME/.nvm &&
-            [ -s \$NVM_DIR/nvm.sh ] && . \$NVM_DIR/nvm.sh &&
-
-            echo "Connected to EC2" &&
-            pwd &&
-
-            if [ ! -d "DevEvents" ]; then
-              git clone https://x-access-token:$GIT_TOKEN@github.com/Nevin505/DevEvents.git
-            fi
-
-            cd DevEvents
-            git pull https://x-access-token:$GIT_TOKEN@github.com/Nevin505/DevEvents.git master
-            which node
-            which npm
-            npm install
-            npm run dev 
+          ssh -o StrictHostKeyChecking=no ubuntu@ec2-13-235-2-173.ap-south-1.compute.amazonaws.com "
+            # Now we have got the access of EC2 and we will start the deploy .
+            ls
+            whoami
+            cd /home/ubuntu/DevEvents &&
+            git checkout dev &&
+            git fetch --all &&
+            git reset --hard origin/dev &&
+            git pull origin dev &&
+            sudo npm i &&
+            sudo npm run build &&
+            sudo pm2 stop ./dist/index.js &&
+            sudo pm2 start ./dist/index.js
             "
