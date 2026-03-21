@@ -25,12 +25,8 @@ jobs:
             whoami
             git clone https://github.com/Nevin505/DevEvents.git DevEvents
             cd /home/ubuntu/DevEvents &&
-            git checkout dev &&
             git fetch --all &&
-            git reset --hard origin/dev &&
-            git pull origin dev &&
+            git pull origin master &&
             sudo npm i &&
-            sudo npm run build &&
-            sudo pm2 stop ./dist/index.js &&
-            sudo pm2 start ./dist/index.js
+            sudo npm run dev
             "
