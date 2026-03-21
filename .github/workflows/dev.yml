@@ -32,5 +32,5 @@ jobs:
             git pull origin master &&
             npm install &&
             pm2 stop DevEvents &&
-            pm2 restart DevEvents
+            pm2 start "npm run dev"
             "
