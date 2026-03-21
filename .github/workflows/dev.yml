@@ -26,7 +26,8 @@ jobs:
             git clone https://github.com/Nevin505/DevEvents.git DevEvents
             cd /home/ubuntu/DevEvents &&
             git fetch --all &&
+            echo node -v &&
             git pull origin master &&
-            sudo npm i &&
-            sudo npm run dev
+            npm i &&
+            npm run dev
             "
