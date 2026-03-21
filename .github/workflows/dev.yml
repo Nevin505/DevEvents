@@ -23,14 +23,13 @@ jobs:
             # Now we have got the access of EC2 and we will start the deploy .
             ls
             whoami
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            export NVM_DIR=\"\$HOME/.nvm\"
+            [ -s \"\$NVM_DIR/nvm.sh\" ] && \. \"\$NVM_DIR/nvm.sh\"
             nvm use 20
             git clone https://github.com/Nevin505/DevEvents.git DevEvents
             cd /home/ubuntu/DevEvents &&
             git fetch --all &&
-            /usr/bin/node -v &&
             git pull origin master &&
-            /usr/bin/npm install &&
-            /usr/bin/npm run dev
+            npm install &&
+            npm run dev
             "
