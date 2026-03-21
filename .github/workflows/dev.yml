@@ -31,6 +31,6 @@ jobs:
             git fetch --all &&
             git pull origin master &&
             npm install &&
-            fuser -k 3000/tcp || true &&
+            pm2 stop DevEvents &&
             pm2 restart DevEvents
             "
