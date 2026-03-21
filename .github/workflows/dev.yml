@@ -31,5 +31,6 @@ jobs:
             git fetch --all &&
             git pull origin master &&
             npm install &&
-           pm2 restart DevEvents || pm2 start npm --name DevEvents -- run dev
+
+            pm2 restart DevEvents
             "
