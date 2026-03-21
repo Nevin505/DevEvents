@@ -28,6 +28,6 @@ jobs:
             git fetch --all &&
             echo node -v &&
             git pull origin master &&
-            npm i &&
-            npm run dev
+            /usr/bin/npm install &&
+            /usr/bin/npm run dev
             "
