@@ -23,6 +23,7 @@ jobs:
             # Now we have got the access of EC2 and we will start the deploy .
             ls
             whoami
+            git clone https://github.com/Nevin505/DevEvents.git DevEvents
             cd /home/ubuntu/DevEvents &&
             git checkout dev &&
             git fetch --all &&
